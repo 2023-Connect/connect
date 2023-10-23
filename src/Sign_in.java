@@ -18,6 +18,7 @@ public class Sign_in {
         infoPanel = new JPanel();
         infoLabel = new JLabel(login);
 
+
         infoPanel.add(infoLabel);
 
         mainFrame.setVisible(true);
