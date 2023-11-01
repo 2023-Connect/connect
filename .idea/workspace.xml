@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64139594-07cb-4a03-905a-6180f35730fa" name="Changes" comment="[DOCS] Font 추가">
+    <list default="true" id="64139594-07cb-4a03-905a-6180f35730fa" name="Changes" comment="[FEAT] Round 오버라이딩, bottomPanel 완성">
+      <change afterPath="$PROJECT_DIR$/src/ChatPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Sign_in.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sign_in.java" afterDir="false" />
     </list>
@@ -78,13 +80,21 @@
       <option name="project" value="LOCAL" />
       <updated>1698815849934</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="[FEAT] Round 오버라이딩, bottomPanel 완성">
+      <created>1698820356998</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698820356998</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="[FEAT] commit init" />
     <MESSAGE value="[FEAT] JTextField 디자인 변경" />
     <MESSAGE value="[DOCS] Font 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="[DOCS] Font 추가" />
+    <MESSAGE value="[FEAT] Round 오버라이딩, bottomPanel 완성" />
+    <option name="LAST_COMMIT_MESSAGE" value="[FEAT] Round 오버라이딩, bottomPanel 완성" />
   </component>
 </project>

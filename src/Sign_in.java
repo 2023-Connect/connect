@@ -35,19 +35,15 @@ public class Sign_in {
         RoundedButton signInBtn;
         RoundedButton signUpBtn;
 
-    // font
-    Font fontBlack = Font.createFont(Font.TRUETYPE_FONT, new File("Font/NotoSansKR-Black.ttf"));
-    Font fontBold = Font.createFont(Font.TRUETYPE_FONT, new File("Font/NotoSansKR-Bold.ttf"));
-    Font fontExtraBold = Font.createFont(Font.TRUETYPE_FONT, new File("Font/NotoSansKR-ExtraBold.ttf"));
-    Font fontExtraLight = Font.createFont(Font.TRUETYPE_FONT, new File("Font/NotoSansKR-ExtraLight.ttf"));
-    Font fontLight = Font.createFont(Font.TRUETYPE_FONT, new File("Font/NotoSansKR-Light.ttf"));
-    Font fontMedium = Font.createFont(Font.TRUETYPE_FONT, new File("Font/NotoSansKR-Medium.ttf"));
-    Font fontRegular = Font.createFont(Font.TRUETYPE_FONT, new File("Font/NotoSansKR-Regular.ttf"));
-    Font fontSemiBold = Font.createFont(Font.TRUETYPE_FONT, new File("Font/NotoSansKR-SemiBold.ttf"));
-    Font fontThin = Font.createFont(Font.TRUETYPE_FONT, new File("Font/NotoSansKR-Thin.ttf"));
 
-    // color
-    Color mainColor = Color.decode("#FFF17E");
+    Config con = new Config();
+    Font fontBlack = con.getFontBlack();
+    Font fontBold = con.getFontBold();
+    Font fontMedium = con.getFontMedium();
+    Font fontRegular = con.getFontRegular();
+
+    Color mainColor = con.getMainColor();
+
 
     public Sign_in() throws IOException, FontFormatException {
         JFrame mainFrame = new JFrame(title);
