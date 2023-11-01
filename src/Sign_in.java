@@ -1,13 +1,8 @@
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.plaf.basic.BasicTextAreaUI;
-import javax.swing.plaf.basic.BasicTextFieldUI;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
-import java.io.File;
 import java.io.IOException;
 
 public class Sign_in {
@@ -19,7 +14,7 @@ public class Sign_in {
 
     JPanel signInPanel;
         JPanel idPanel;
-            JLabel idTitlLabel;
+            JLabel idTitleLabel;
                 String id = "아이디";
             JPanel idTAPanel;
                 JTextField idTextArea;
@@ -97,16 +92,16 @@ public class Sign_in {
         idPanel = new JPanel();
         idPanel.setLayout(new BorderLayout());
         idPanel.setSize(83,55);
-        idTitlLabel = new JLabel(id);
-        idTitlLabel.setFont(fontMedium);
+        idTitleLabel = new JLabel(id);
+        idTitleLabel.setFont(fontMedium);
 
         idTAPanel = new JPanel();
         idTAPanel.setLayout(new BorderLayout());
         RoundedPanelBorder roundedPanelBorder = new RoundedPanelBorder(50,3);
         idTAPanel.setBorder(roundedPanelBorder);
-        Border originalBorder = idTAPanel.getBorder(); // 기존의 Border를 가져옵니다.
-        Border paddingBorder = new EmptyBorder(1, 15, 1, 15); // 원하는 패딩을 설정합니다.
-        idTAPanel.setBorder(BorderFactory.createCompoundBorder(originalBorder, paddingBorder)); // 기존 Border와 패딩을 결합하여 설정합니다.
+        Border originalBorder = idTAPanel.getBorder();
+        Border paddingBorder = new EmptyBorder(1, 15, 1, 15);
+        idTAPanel.setBorder(BorderFactory.createCompoundBorder(originalBorder, paddingBorder));
         idTextArea = new JTextField(16);
         idTextArea.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         idTextArea.setFont(fontRegular);
@@ -124,8 +119,8 @@ public class Sign_in {
         pwTAPanel = new JPanel();
         pwTAPanel.setLayout(new BorderLayout());
         pwTAPanel.setBorder(roundedPanelBorder);
-        Border original2Border = pwTAPanel.getBorder(); // 기존의 Border를 가져옵니다.
-        pwTAPanel.setBorder(BorderFactory.createCompoundBorder(original2Border, paddingBorder)); // 기존 Border와 패딩을 결합하여 설정합니다.
+        Border original2Border = pwTAPanel.getBorder();
+        pwTAPanel.setBorder(BorderFactory.createCompoundBorder(original2Border, paddingBorder));
         pwTextArea = new JTextField(16);
         pwTextArea.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         pwTextArea.setFont(fontRegular);
@@ -165,7 +160,7 @@ public class Sign_in {
         // add
         infoPanel.add(infoLabel);
         idTAPanel.add(idTextArea, BorderLayout.CENTER);
-        idPanel.add(idTitlLabel, BorderLayout.WEST);
+        idPanel.add(idTitleLabel, BorderLayout.WEST);
         idPanel.add(idTAPanel, BorderLayout.EAST);
         pwTAPanel.add(pwTextArea, BorderLayout.CENTER);
         pwPanel.add(pwTitleLabel, BorderLayout.WEST);
@@ -187,8 +182,8 @@ public class Sign_in {
 
     // 둥근 모서리
     public class RoundedPanelBorder implements Border {
-        private int arc;
-        private int thickness;
+        private final int arc;
+        private final int thickness;
 
         public RoundedPanelBorder(int arc, int thickness) {
             this.arc = arc;
@@ -214,11 +209,7 @@ public class Sign_in {
         }
     }
     public class RoundedButton extends JButton {
-        public RoundedButton() { super(); decorate(); }
         public RoundedButton(String text) { super(text); decorate(); }
-        public RoundedButton(Action action) { super(action); decorate(); }
-        public RoundedButton(Icon icon) { super(icon); decorate(); }
-        public RoundedButton(String text, Icon icon) { super(text, icon); decorate(); }
         protected void decorate() { setBorderPainted(false); setOpaque(false); }
         @Override
         protected void paintComponent(Graphics g) {
@@ -249,9 +240,7 @@ public class Sign_in {
         SwingUtilities.invokeLater(() -> {
             try {
                 new Sign_in();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } catch (FontFormatException e) {
+            } catch (IOException | FontFormatException e) {
                 throw new RuntimeException(e);
             }
         });
