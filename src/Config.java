@@ -3,6 +3,17 @@ import java.io.File;
 import java.io.IOException;
 
 public class Config {
+    // String
+    private String title = "Connect";
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     // font
     private Font fontBlack = Font.createFont(Font.TRUETYPE_FONT, new File("Font/NotoSansKR-Black.ttf"));
     private Font fontBold = Font.createFont(Font.TRUETYPE_FONT, new File("Font/NotoSansKR-Bold.ttf"));
@@ -14,8 +25,7 @@ public class Config {
     private Font fontSemiBold = Font.createFont(Font.TRUETYPE_FONT, new File("Font/NotoSansKR-SemiBold.ttf"));
     private Font fontThin = Font.createFont(Font.TRUETYPE_FONT, new File("Font/NotoSansKR-Thin.ttf"));
 
-    // getter & setter
-    private Color mainColor = Color.decode("#FFF17E");
+    // Font getter & setter
 
     public Font getFontBlack() {
         return fontBlack;
@@ -91,6 +101,7 @@ public class Config {
 
 
     // color
+    private Color mainColor = Color.decode("#FFF17E");
     public Color getMainColor() {
         return mainColor;
     }

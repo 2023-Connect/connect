@@ -6,7 +6,6 @@ import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
 
 public class Sign_in {
-    String title = "Connect";
     JPanel infoPanel;
         JLabel infoLabel;
         String login = "로그인";
@@ -32,6 +31,7 @@ public class Sign_in {
 
 
     Config con = new Config();
+    String title = con.getTitle();
     Font fontBlack = con.getFontBlack();
     Font fontBold = con.getFontBold();
     Font fontMedium = con.getFontMedium();
