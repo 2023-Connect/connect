@@ -35,8 +35,21 @@ public class ChatPage {
                 JLabel myPageLabel;
                     String myPage = "마이페이지";
 
+    JPanel mainPanel;
+        JPanel chatTitlePanel;
+            JLabel chatTitleLabel;
+            JButton chatAddBtn;
+        JScrollPane scrollPane;
+            JPanel chatGroupPanel;
+                JLabel ProfileImgLabel;
+
+
+
+
+
 
     // font
+    Font fontBlack = con.getFontBlack();
     Font fontMedium = con.getFontMedium();
 
     // image
@@ -44,6 +57,9 @@ public class ChatPage {
     ImageIcon boardImg = new ImageIcon("./Image/Button_Image/board.png");
     ImageIcon searchImg = new ImageIcon("./Image/Button_Image/search.png");
     ImageIcon myPageImg = new ImageIcon("./Image/Button_Image/myPage.png");
+
+
+    ImageIcon plusImg = new ImageIcon("./Image/icon/plus.png");
 
     public ChatPage () throws IOException, FontFormatException {
         JFrame mainFrame = new JFrame(title);
@@ -53,8 +69,15 @@ public class ChatPage {
         mainFrame.setResizable(false);
         mainFrame.setLayout(new BorderLayout());
 
-        fontMedium = fontMedium.deriveFont(15f);
+
+        // font
+        fontBlack = fontBlack.deriveFont(40f);
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(fontBlack);
+
+
+        fontMedium = fontMedium.deriveFont(15f);
+        ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(fontMedium);
 
         // sideBar
@@ -179,7 +202,34 @@ public class ChatPage {
         sidePanel.add(searchPanel);
         sidePanel.add(myPagePanel);
 
+
+        // main
+        mainPanel = new JPanel();
+        mainPanel.setLayout(new BorderLayout());
+        mainPanel.setPreferredSize(new Dimension(603, 640));
+        chatTitlePanel = new JPanel();
+        chatTitlePanel.setLayout(new BorderLayout());
+        chatTitlePanel.setBorder(BorderFactory.createEmptyBorder(40, 50, 60, 35));
+        chatTitleLabel = new JLabel(chat);
+        chatTitleLabel.setFont(fontBlack);
+
+
+        chatAddBtn = new JButton(plusImg);
+        chatAddBtn.setBackground(Color.WHITE);
+        chatAddBtn.setBorderPainted(false);
+
+        // setBackground
+        chatTitlePanel.setBackground(Color.WHITE);
+        mainPanel.setBackground(Color.WHITE);
+
+        // add
+        chatTitlePanel.add(chatTitleLabel, BorderLayout.WEST);
+        chatTitlePanel.add(chatAddBtn, BorderLayout.EAST);
+
+        mainPanel.add(chatTitlePanel, BorderLayout.NORTH);
+
         mainFrame.add(sidePanel, BorderLayout.WEST);
+        mainFrame.add(mainPanel, BorderLayout.EAST);
         mainFrame.setVisible(true);
     }
 
