@@ -41,7 +41,6 @@ public class ChatPage {
             JButton chatAddBtn;
         JScrollPane scrollPane;
             JPanel chatGroupPanel;
-                JLabel ProfileImgLabel;
 
 
 
@@ -209,7 +208,7 @@ public class ChatPage {
         mainPanel.setPreferredSize(new Dimension(603, 640));
         chatTitlePanel = new JPanel();
         chatTitlePanel.setLayout(new BorderLayout());
-        chatTitlePanel.setBorder(BorderFactory.createEmptyBorder(40, 50, 60, 35));
+        chatTitlePanel.setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 35));
         chatTitleLabel = new JLabel(chat);
         chatTitleLabel.setFont(fontBlack);
 
@@ -218,15 +217,32 @@ public class ChatPage {
         chatAddBtn.setBackground(Color.WHITE);
         chatAddBtn.setBorderPainted(false);
 
+        chatGroupPanel = new JPanel();
+        chatGroupPanel.setLayout(new BoxLayout(chatGroupPanel, BoxLayout.Y_AXIS));
+
+        for (int i = 0; i < 10; i++ ) {
+            chatRoomPanel chatRoomPanel = new chatRoomPanel();
+            chatGroupPanel.add(chatRoomPanel);
+        }
+
+
+        scrollPane = new JScrollPane(chatGroupPanel);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+
+
+
         // setBackground
         chatTitlePanel.setBackground(Color.WHITE);
         mainPanel.setBackground(Color.WHITE);
+
+
 
         // add
         chatTitlePanel.add(chatTitleLabel, BorderLayout.WEST);
         chatTitlePanel.add(chatAddBtn, BorderLayout.EAST);
 
         mainPanel.add(chatTitlePanel, BorderLayout.NORTH);
+        mainPanel.add(scrollPane, BorderLayout.CENTER);
 
         mainFrame.add(sidePanel, BorderLayout.WEST);
         mainFrame.add(mainPanel, BorderLayout.EAST);

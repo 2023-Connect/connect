@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64139594-07cb-4a03-905a-6180f35730fa" name="Changes" comment="[FEAT] SideBar 제작">
+    <list default="true" id="64139594-07cb-4a03-905a-6180f35730fa" name="Changes" comment="[FEAT] SideBar 이미지 추가">
+      <change afterPath="$PROJECT_DIR$/Image/Flag/canada.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/Flag/china.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/Flag/france.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/Flag/germany.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/Flag/indonesia.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/Flag/japan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/Flag/korea.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/Flag/philippines.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/Flag/taiwan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/Flag/thailand.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/Flag/usa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/Flag/uzbekistan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/Flag/vietnam.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/profile_Image/profile.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chatRoomPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ChatPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatPage.java" afterDir="false" />
     </list>
@@ -17,6 +32,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -110,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698932098285</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="[FEAT] SideBar 이미지 추가">
+      <created>1699246808024</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1699246808024</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -121,6 +144,7 @@
     <MESSAGE value="[FEAT] Config 파일 분리" />
     <MESSAGE value="[STYLE] 변수 이름, 파일 수정" />
     <MESSAGE value="[FEAT] SideBar 제작" />
-    <option name="LAST_COMMIT_MESSAGE" value="[FEAT] SideBar 제작" />
+    <MESSAGE value="[FEAT] SideBar 이미지 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="[FEAT] SideBar 이미지 추가" />
   </component>
 </project>
