@@ -29,11 +29,13 @@ public class chatRoomPanel extends JPanel {
             String amPm;
 
     // image
-    ImageIcon flagImg = new ImageIcon("./Image/Flag/image.png");
+    ImageIcon koreaImg = con.getKoreaImg();
+    ImageIcon usaImg = con.getUsaImg();
+    ImageIcon japanImg = con.getJapanImg();
 
 
     public chatRoomPanel() throws IOException, FontFormatException {
-        setPreferredSize(new Dimension(600, 120));
+        setPreferredSize(new Dimension(570, 120));
         setBackground(Color.WHITE);
         setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 35));
 
@@ -66,15 +68,20 @@ public class chatRoomPanel extends JPanel {
 
         // contentPanel
         contentPanel = new JPanel(new BorderLayout());
-        contentPanel.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 22));
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 100));
         userInfoPanel = new JPanel(new BorderLayout());
 
         nameLabel = new JLabel(name);
         nameLabel.setFont(fontBold);
 
         countryImagesPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JLabel jLabel = new JLabel(flagImg);
+        JLabel jLabel = new JLabel(koreaImg);
         countryImagesPanel.add(jLabel);
+        jLabel = new JLabel(usaImg);
+        countryImagesPanel.add(jLabel);
+        jLabel = new JLabel(japanImg);
+        countryImagesPanel.add(jLabel);
+
 
         chatContentLabel = new JLabel(chatContent);
 
@@ -91,11 +98,12 @@ public class chatRoomPanel extends JPanel {
         chatContentLabel.setText(text);
         chatContentLabel.setFont(fontMedium);
 
-
+        countryImagesPanel.setBackground(Color.WHITE);
+        userInfoPanel.setBackground(Color.WHITE);
+        contentPanel.setBackground(Color.WHITE);
 
         userInfoPanel.add(nameLabel, BorderLayout.WEST);
         userInfoPanel.add(countryImagesPanel, BorderLayout.CENTER);
-
         contentPanel.add(userInfoPanel,BorderLayout.NORTH);
         contentPanel.add(chatContentLabel, BorderLayout.SOUTH);
 

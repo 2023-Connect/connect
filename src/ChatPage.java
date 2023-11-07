@@ -228,8 +228,7 @@ public class ChatPage {
 
         scrollPane = new JScrollPane(chatGroupPanel);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-
-
+        scrollPane.setBorder(null);
 
         // setBackground
         chatTitlePanel.setBackground(Color.WHITE);
