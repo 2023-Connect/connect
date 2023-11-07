@@ -102,6 +102,7 @@ public class Config {
 
     // color
     private Color mainColor = Color.decode("#FFF17E");
+
     public Color getMainColor() {
         return mainColor;
     }
@@ -113,3 +114,8 @@ public class Config {
     public Config() throws IOException, FontFormatException {
     }
 }
+//<<<<<<< HEAD
+//}
+//=======
+//}
+//>>>>>>> a9239ca5ee3fa824580cf39ee16c8e131997ac5b

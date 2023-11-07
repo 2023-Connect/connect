@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
 
-public class MyPage {
+public class Board {
 
     Config con = new Config();
     String title = con.getTitle();
@@ -39,40 +39,12 @@ public class MyPage {
     JPanel myPageMainPanel;
 
     JPanel myPageMainTitlePanel;
-    String myPageTitle = "마이페이지";
-    JLabel myPageTitleLabel;
+    String boardTitle = "게시판";
+    JButton writing;
+    JLabel boardTitleLabel;
 
-    JPanel myPageMainProfilePanel;
-    JPanel myPageMainProfileTextPanel;
-    String myPageName = "오수빈";
-    JLabel myPageNameLabel;
-    String myPageId = "oxnqlu";
-    JLabel myPageIdLabel;
-    String myPageSelfIntroduction = "쌍큼발랄고딩이";
-    JLabel myPageSelfIntroductionLabel;
 
-    JPanel myPageMainETCPanel;
-    String nationality = "국적 : ";
-    String myPageNationality = "대한민국";
-    JLabel myPageNationalityLabel;
-    String language = "언어 : ";
-    String myPageLanguage = "한국어";
-    JLabel myPageLanguageLabel;
-    String birthday = "생년월일 : ";
-    int birthdayYear = 2006;
-    int birthdayMonth = 01;
-    int birthdayDay = 16;
-    JLabel myPageBirthdayLabel;
-    String gender = "성별 : ";
-    String myPageGender = "여";
-    JLabel genderLabel;
-    JLabel myPageGenderLabel;
 
-    JButton myPageCorrectionButton;
-    JPanel myPageMainButtonPanel;
-    JButton profilePictureBtn;
-    int buttonWidth = 500;
-    int buttonHeight = 100;
 
 
     // font
@@ -83,9 +55,9 @@ public class MyPage {
 
     // image
     ImageIcon chatImg = new ImageIcon("./Image/Button_Image/chat.png");
-    ImageIcon boardImg = new ImageIcon("./Image/Button_Image/board.png");
+    ImageIcon boardImg = new ImageIcon("./Image/Button_Image/board_here.png");
     ImageIcon searchImg = new ImageIcon("./Image/Button_Image/search.png");
-    ImageIcon myPageImg = new ImageIcon("./Image/Button_Image/myPage_here.png");
+    ImageIcon myPageImg = new ImageIcon("./Image/Button_Image/myPage.png");
 
     ImageIcon profilePicture = new ImageIcon("./Image/profilePicture.jpg");
     Image originalImage, scaledImage;
@@ -94,7 +66,7 @@ public class MyPage {
     JLabel profileLabel;
 
 
-    public MyPage () throws IOException, FontFormatException {
+    public Board () throws IOException, FontFormatException {
         JFrame mainFrame = new JFrame(title);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(753,640);
@@ -248,100 +220,7 @@ public class MyPage {
         myPageMainPanel.setPreferredSize(new Dimension(603, 640));
         myPageMainPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 
-        myPageMainTitlePanel = new JPanel();
-        myPageMainTitlePanel.setPreferredSize(new Dimension(603, 70));
-        myPageMainTitlePanel.setLayout(new BorderLayout());
-        myPageTitleLabel = new JLabel("<html><div style='margin-left: 30px;'>" + myPageTitle + "</div></html>");
-        myPageTitleLabel.setFont(fontExtraBold);
-        myPageTitleLabel.setForeground(Color.BLACK);
-        myPageMainTitlePanel.setBackground(Color.WHITE);
 
-
-
-        myPageMainProfilePanel = new JPanel();
-        myPageMainProfilePanel.setPreferredSize(new Dimension(603, 150));
-        myPageMainProfilePanel.setLayout(new BorderLayout());
-
-        // myPageMainProfilePanel
-        originalImage = profilePicture.getImage();
-        scaledImage = originalImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-        scaledIcon = new ImageIcon(scaledImage);
-        profilePictureBtn = new JButton(scaledIcon);
-        profilePictureBtn.setPreferredSize(new Dimension(150, 150)); // 원하는 크기로 설정
-        profilePictureBtn.setOpaque(false);
-        myPageMainProfilePanel.setBackground(Color.WHITE);
-        profilePictureBtn.setBorder(BorderFactory.createCompoundBorder(
-                new EmptyBorder(0,50,0,0),
-                profilePictureBtn.getBorder()
-        ));
-
-        //myPageMainProfileTextPanel
-        myPageMainProfileTextPanel = new JPanel();
-        myPageMainProfileTextPanel.setPreferredSize(new Dimension(603, 150));
-        myPageMainProfileTextPanel.setLayout(new BoxLayout(myPageMainProfileTextPanel, BoxLayout.Y_AXIS));
-        myPageMainProfileTextPanel.setBackground(Color.WHITE);
-
-        // myPageMainProfileTextPanel Text
-        myPageNameLabel = new JLabel("<html><div style='margin-left: 30px; margin-top: 15px;'>" + myPageName + "</div></html>");
-        myPageNameLabel.setFont(fontExtraBold);
-        myPageNameLabel.setForeground(Color.BLACK);
-        myPageIdLabel = new JLabel("<html><div style='margin-left: 30px;'>" + myPageId + "</div></html>");
-        myPageIdLabel.setFont(fontRegular);
-        myPageIdLabel.setForeground(Color.BLACK);
-        myPageSelfIntroductionLabel = new JLabel("<html><div style='margin-left: 30px;'>" + myPageSelfIntroduction + "</div></html>");
-        myPageSelfIntroductionLabel.setFont(fontRegular);
-        myPageSelfIntroductionLabel.setForeground(Color.BLACK);
-
-        // myPageMainETCPanel
-        myPageMainETCPanel = new JPanel();
-        myPageMainETCPanel.setPreferredSize(new Dimension(603, 120));
-        myPageMainETCPanel.setLayout(new BoxLayout(myPageMainETCPanel, BoxLayout.Y_AXIS));
-        myPageMainETCPanel.setBackground(Color.WHITE);
-
-        // myPageMainETCPanel Text
-        myPageNationalityLabel = new JLabel("<html><div style='margin-left: 30px;'>"
-                + nationality + myPageNationality + "</div></html>");
-        myPageNationalityLabel.setFont(fontRegular);
-        myPageNationalityLabel.setForeground(Color.BLACK);
-        myPageLanguageLabel = new JLabel("<html><div style='margin-left: 30px;'>"
-                + language + myPageLanguage + "</div></html>");
-        myPageLanguageLabel.setFont(fontRegular);
-        myPageLanguageLabel.setForeground(Color.BLACK);
-        myPageBirthdayLabel = new JLabel("<html><div style='margin-left: 30px;'>"
-                + birthday + birthdayYear + "년 " + birthdayMonth + "월 " + birthdayDay + "일" + "</div></html>");
-        myPageBirthdayLabel.setFont(fontRegular);
-        myPageBirthdayLabel.setForeground(Color.BLACK);
-        myPageGenderLabel = new JLabel("<html><div style='margin-left: 30px;'>"
-                + gender + myPageGender + "</div></html>");
-        myPageGenderLabel.setFont(fontRegular);
-        myPageGenderLabel.setForeground(Color.BLACK);
-
-        // myPageMainButtonPanel
-        myPageMainButtonPanel = new JPanel();
-        myPageMainButtonPanel.setPreferredSize(new Dimension(603, 120));
-        myPageMainButtonPanel.setLayout(new BoxLayout(myPageMainButtonPanel, BoxLayout.Y_AXIS));
-        myPageMainButtonPanel.setBackground(Color.WHITE);
-        myPageCorrectionButton = new RoundedButton("수정");
-        myPageCorrectionButton.setFont(fontBold);
-        myPageCorrectionButton.setForeground(Color.GRAY);
-        
-
-        //add
-        myPageMainTitlePanel.add(myPageTitleLabel);
-        myPageMainProfilePanel.add(profilePictureBtn, BorderLayout.WEST);
-        myPageMainProfileTextPanel.add(myPageNameLabel);
-        myPageMainProfileTextPanel.add(myPageIdLabel);
-        myPageMainProfileTextPanel.add(myPageSelfIntroductionLabel);
-        myPageMainETCPanel.add(myPageNationalityLabel);
-        myPageMainETCPanel.add(myPageLanguageLabel);
-        myPageMainETCPanel.add(myPageBirthdayLabel);
-        myPageMainETCPanel.add(myPageGenderLabel);
-        myPageMainButtonPanel.add(myPageCorrectionButton);
-        myPageMainPanel.add(myPageMainTitlePanel);
-        myPageMainPanel.add(myPageMainProfilePanel);
-        myPageMainPanel.add(myPageMainProfileTextPanel);
-        myPageMainPanel.add(myPageMainETCPanel);
-        myPageMainPanel.add(myPageMainButtonPanel);
         mainFrame.add(myPageMainPanel, BorderLayout.CENTER);
         mainFrame.setVisible(true);
 
@@ -411,6 +290,6 @@ public class MyPage {
 
     // main
     public static void main(String[] args) throws IOException, FontFormatException {
-        new MyPage();
+        new Board();
     }
 }

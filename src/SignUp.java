@@ -22,6 +22,7 @@ public class SignUp extends JFrame {
     String[] national = {
             "국적을 선택해주세요.",
             "대만",
+            "대한민국",
             "독일",
             "미국",
             "베트남",
@@ -37,6 +38,7 @@ public class SignUp extends JFrame {
     String[] national2 = {
             "다중국적자만 선택합니다",
             "대만",
+            "대한민국",
             "독일",
             "미국",
             "베트남",
