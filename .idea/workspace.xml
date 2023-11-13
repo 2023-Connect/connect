@@ -4,120 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ba73598-90d2-43b9-ad20-b331f11a290a" name="Changes" comment="MyPage, Board UI 완성" />
+    <list default="true" id="3ba73598-90d2-43b9-ad20-b331f11a290a" name="Changes" comment="MyPage, Board UI 완성">
+      <change afterPath="$PROJECT_DIR$/Image/profile_Image/profile.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chatRoomPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ChatPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatPage.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectId" id="2WYHglZMMYRJXu5Zch08vDD6H43" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Connect&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
-  }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Connect\Connect\src\Font" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Connect\Image" />
-      <recent name="D:\Connect\profilePicture2" />
-      <recent name="D:\Connect\Image\icon" />
-      <recent name="D:\Connect\Connect\Image\Button_Image" />
-      <recent name="D:\Connect\Connect\Image" />
-    </key>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="3ba73598-90d2-43b9-ad20-b331f11a290a" name="Changes" comment="SignUp page Front-end" />
-      <created>1696902710109</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1696902710109</updated>
-    </task>
-    <task id="LOCAL-00001" summary="[FEAT] commit init">
-      <created>1698038392867</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1698038392867</updated>
-    </task>
-    <task id="LOCAL-00002" summary="[FEAT] JTextField 디자인 변경">
-      <created>1698815828355</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1698815828355</updated>
-    </task>
-    <task id="LOCAL-00003" summary="[DOCS] Font 추가">
-      <created>1698815849934</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1698815849934</updated>
-    </task>
-    <task id="LOCAL-00004" summary="[FEAT] Round 오버라이딩, bottomPanel 완성">
-      <created>1698820356998</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1698820356998</updated>
-    </task>
-    <task id="LOCAL-00005" summary="[FEAT] Config 파일 분리">
-      <created>1698821685079</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1698821685079</updated>
-    </task>
-    <task id="LOCAL-00006" summary="[STYLE] 변수 이름, 파일 수정">
-      <created>1698822007480</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1698822007480</updated>
-    </task>
-    <task id="LOCAL-00007" summary="[FEAT] SideBar 제작">
-      <created>1698932098285</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1698932098285</updated>
-    </task>
-    <task id="LOCAL-00008" summary="MyPage, Board UI 완성">
-      <created>1699851935937</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1699851935937</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -130,17 +30,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="[FEAT] commit init" />
-    <MESSAGE value="[FEAT] JTextField 디자인 변경" />
-    <MESSAGE value="[DOCS] Font 추가" />
-    <MESSAGE value="[FEAT] Round 오버라이딩, bottomPanel 완성" />
-    <MESSAGE value="[FEAT] Config 파일 분리" />
-    <MESSAGE value="[STYLE] 변수 이름, 파일 수정" />
-    <MESSAGE value="[FEAT] SideBar 제작" />
-    <MESSAGE value="MyPage, Board UI 완성" />
-    <option name="LAST_COMMIT_MESSAGE" value="MyPage, Board UI 완성" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Connect$Main.ic" NAME="Main Coverage Results" MODIFIED="1698640665580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
