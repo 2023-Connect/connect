@@ -1,8 +1,12 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.RoundRectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 public class MyPage {
@@ -65,7 +69,6 @@ public class MyPage {
     JLabel myPageBirthdayLabel;
     String gender = "성별 : ";
     String myPageGender = "여";
-    JLabel genderLabel;
     JLabel myPageGenderLabel;
 
     JButton myPageCorrectionButton;
@@ -247,6 +250,7 @@ public class MyPage {
         myPageMainPanel = new JPanel();
         myPageMainPanel.setPreferredSize(new Dimension(603, 640));
         myPageMainPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+        myPageMainPanel.setBackground(Color.WHITE);
 
         myPageMainTitlePanel = new JPanel();
         myPageMainTitlePanel.setPreferredSize(new Dimension(603, 70));
@@ -259,21 +263,30 @@ public class MyPage {
 
 
         myPageMainProfilePanel = new JPanel();
-        myPageMainProfilePanel.setPreferredSize(new Dimension(603, 150));
+        myPageMainProfilePanel.setPreferredSize(new Dimension(550, 200));
         myPageMainProfilePanel.setLayout(new BorderLayout());
-
-        // myPageMainProfilePanel
-        originalImage = profilePicture.getImage();
-        scaledImage = originalImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-        scaledIcon = new ImageIcon(scaledImage);
-        profilePictureBtn = new JButton(scaledIcon);
-        profilePictureBtn.setPreferredSize(new Dimension(150, 150)); // 원하는 크기로 설정
-        profilePictureBtn.setOpaque(false);
         myPageMainProfilePanel.setBackground(Color.WHITE);
-        profilePictureBtn.setBorder(BorderFactory.createCompoundBorder(
-                new EmptyBorder(0,50,0,0),
-                profilePictureBtn.getBorder()
-        ));
+
+        BufferedImage originalImage2 = null;
+        try {
+            originalImage2 = ImageIO.read(new File("./Image/profilePicture.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // 이미지를 동그랗게 자르기
+        int width1 = 180;
+        int height1 = 180;
+        BufferedImage circularImage1 = new BufferedImage(width1, height1, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g11 = circularImage1.createGraphics();
+        g11.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        Shape circle1 = new Ellipse2D.Double(0, 0, width1, height1);
+        g11.setClip(circle1);
+        g11.drawImage(originalImage2.getScaledInstance(width1, height1, Image.SCALE_SMOOTH), 0, 0, null);
+        g11.dispose();
+
+        ImageIcon circularIcon1 = new ImageIcon(circularImage1);
+        JLabel ImageLabel1 = new JLabel(circularIcon1);
 
         //myPageMainProfileTextPanel
         myPageMainProfileTextPanel = new JPanel();
@@ -318,7 +331,7 @@ public class MyPage {
 
         // myPageMainButtonPanel
         myPageMainButtonPanel = new JPanel();
-        myPageMainButtonPanel.setPreferredSize(new Dimension(603, 120));
+        myPageMainButtonPanel.setPreferredSize(new Dimension(603, 100));
         myPageMainButtonPanel.setLayout(new BoxLayout(myPageMainButtonPanel, BoxLayout.Y_AXIS));
         myPageMainButtonPanel.setBackground(Color.WHITE);
         myPageCorrectionButton = new RoundedButton("수정");
@@ -328,7 +341,8 @@ public class MyPage {
 
         //add
         myPageMainTitlePanel.add(myPageTitleLabel);
-        myPageMainProfilePanel.add(profilePictureBtn, BorderLayout.WEST);
+        myPageMainProfilePanel.add(Box.createRigidArea(new Dimension(70, 0)));
+        myPageMainProfilePanel.add(ImageLabel1, BorderLayout.WEST);
         myPageMainProfileTextPanel.add(myPageNameLabel);
         myPageMainProfileTextPanel.add(myPageIdLabel);
         myPageMainProfileTextPanel.add(myPageSelfIntroductionLabel);
@@ -336,6 +350,7 @@ public class MyPage {
         myPageMainETCPanel.add(myPageLanguageLabel);
         myPageMainETCPanel.add(myPageBirthdayLabel);
         myPageMainETCPanel.add(myPageGenderLabel);
+        myPageMainButtonPanel.add(Box.createRigidArea(new Dimension(8, 0)));
         myPageMainButtonPanel.add(myPageCorrectionButton);
         myPageMainPanel.add(myPageMainTitlePanel);
         myPageMainPanel.add(myPageMainProfilePanel);
