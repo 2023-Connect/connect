@@ -1,6 +1,7 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class ChatPage {
@@ -174,6 +175,59 @@ public class ChatPage {
         searchLabelPanel.setBackground(mainColor);
         myPageBtnPanel.setBackground(Color.WHITE);
         myPageLabelPanel.setBackground(Color.WHITE);
+
+        // addActionListener
+        searchBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        try {
+                            new SearchPage();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        } catch (FontFormatException e) {
+                            throw new RuntimeException(e);
+                        }
+                        mainFrame.setVisible(false);
+                    }
+                });
+            }
+        });
+        boardBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        try {
+                            new BulletinPage();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        } catch (FontFormatException e) {
+                            throw new RuntimeException(e);
+                        }
+                        mainFrame.setVisible(false);
+                    }
+                });
+            }
+        });
+        myPageBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        try {
+                            new MyPage();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        } catch (FontFormatException e) {
+                            throw new RuntimeException(e);
+                        }
+                        mainFrame.setVisible(false);
+                    }
+                });
+            }
+        });
 
         // add
         chatBtnPanel.add(chatBtn);

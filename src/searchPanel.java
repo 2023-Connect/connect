@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class chatRoomPanel extends JPanel {
+public class searchPanel extends JPanel {
 
     Config con = new Config();
     Font fontBold = con.getFontBold();
@@ -14,18 +14,16 @@ public class chatRoomPanel extends JPanel {
 
     JLabel ImageLabel;
     JPanel contentPanel;
-        JPanel userInfoPanel;
-            JLabel nameLabel;
-                String name = "황슬기";
-        JPanel countryImagesPanel;
-        JLabel chatContentLabel;
-            String chatContent = "경로당홍삼캔디킹도둑엄준식밍청이메롱티비이지두댄스";
-    JPanel timePanel;
-        JLabel dayLabel;
-            String day = "2023-11-7";
-        JLabel timeLabel;
-            String time = "14:00";
-            String amPm;
+    JPanel userInfoPanel;
+    JLabel nameLabel;
+    String name = "황슬기";
+    JPanel countryImagesPanel;
+    JLabel chatContentLabel;
+    String chatContent = "이곳은 자기소개란입니다";
+    JPanel addPanel;
+        JButton addBtn;
+            ImageIcon plusImg = new ImageIcon("./Image/icon/plus.png");
+
 
     // image
     ImageIcon koreaImg = con.getKoreaImg();
@@ -33,7 +31,7 @@ public class chatRoomPanel extends JPanel {
     ImageIcon japanImg = con.getJapanImg();
 
 
-    public chatRoomPanel() throws IOException, FontFormatException {
+    public searchPanel() throws IOException, FontFormatException {
         setPreferredSize(new Dimension(570, 120));
         setBackground(Color.WHITE);
         setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 35));
@@ -67,7 +65,7 @@ public class chatRoomPanel extends JPanel {
 
         // contentPanel
         contentPanel = new JPanel(new BorderLayout());
-        contentPanel.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 100));
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 150));
         userInfoPanel = new JPanel(new BorderLayout());
 
         nameLabel = new JLabel(name);
@@ -108,45 +106,19 @@ public class chatRoomPanel extends JPanel {
 
 
         // timePanel
-        timePanel = new JPanel(new GridBagLayout());
+        addPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        addBtn = new JButton(plusImg);
+        addBtn.setPreferredSize(new Dimension(50,50));
+        addBtn.setBackground(Color.WHITE);
+        addBtn.setBorderPainted(false);
 
-        fontMedium = fontMedium.deriveFont(12f);
-        ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        ge.registerFont(fontMedium);
-
-        dayLabel = new JLabel(day);
-        dayLabel.setFont(fontMedium);
-
-        // am pm 구하기
-        String hourString = time.substring(0, 2);
-        if (Integer.parseInt(hourString) > 12) {
-            time = time.replace(time.substring(0, 2), Integer.toString(Integer.parseInt(hourString) - 12));
-            amPm = "pm";
-        } else {
-            amPm = "am";
-        }
-
-        timeLabel = new JLabel(time + " " + amPm);
-        timeLabel.setFont(fontMedium);
-
-        // Create GridBagConstraints
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.WEST;
-        timePanel.add(dayLabel, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.anchor = GridBagConstraints.EAST;
-        timePanel.add(timeLabel, gbc);
-
-        timePanel.setBackground(Color.WHITE);
+        addPanel.add(addBtn);
+        addPanel.setBackground(Color.WHITE);
 
 
         add(ImageLabel, BorderLayout.WEST);
         add(contentPanel, BorderLayout.CENTER);
-        add(timePanel, BorderLayout.EAST);
+        add(addPanel, BorderLayout.EAST);
         setVisible(true);
     }
 }

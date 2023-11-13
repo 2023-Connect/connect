@@ -3,6 +3,8 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
@@ -217,6 +219,59 @@ public class MyPage {
         searchLabelPanel.setBackground(mainColor);
         myPageBtnPanel.setBackground(Color.WHITE);
         myPageLabelPanel.setBackground(Color.WHITE);
+
+        // addActionListener
+        chatBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        try {
+                            new ChatPage();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        } catch (FontFormatException e) {
+                            throw new RuntimeException(e);
+                        }
+                        mainFrame.setVisible(false);
+                    }
+                });
+            }
+        });
+        boardBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        try {
+                            new BulletinPage();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        } catch (FontFormatException e) {
+                            throw new RuntimeException(e);
+                        }
+                        mainFrame.setVisible(false);
+                    }
+                });
+            }
+        });
+        searchBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        try {
+                            new SearchPage();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        } catch (FontFormatException e) {
+                            throw new RuntimeException(e);
+                        }
+                        mainFrame.setVisible(false);
+                    }
+                });
+            }
+        });
 
         // add
         chatBtnPanel.add(chatBtn);

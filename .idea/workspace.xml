@@ -4,17 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ba73598-90d2-43b9-ad20-b331f11a290a" name="Changes" comment="MyPage, Board UI 완성">
-      <change afterPath="$PROJECT_DIR$/Image/profile_Image/profile.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chatRoomPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="ec5f26f0-31f3-4441-a140-93260a067e35" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/SearchPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/searchPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BulletinPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BulletinPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ChatPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chatRoomPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/chatRoomPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="TaskManager">

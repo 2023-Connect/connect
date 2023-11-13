@@ -1,12 +1,13 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.RoundRectangle2D;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 
-public class BulletinPage {
+import static com.sun.glass.ui.Cursor.setVisible;
+
+public class SearchPage {
 
     Config con = new Config();
     String title = con.getTitle();
@@ -40,15 +41,11 @@ public class BulletinPage {
 
     JPanel mainPanel;
     JPanel chatTitlePanel;
-    JLabel chatTitleLabel;
-    JButton chatAddBtn;
+    JLabel titleLabel;
     JScrollPane scrollPane;
-    JPanel bulletinGroupPanel;
-    JLabel ProfileImgLabel;
+    JPanel searchGroupPanel;
 
-    JPanel boardMainChoosePanel;
-    JButton boardWritingButton;
-    JButton boardTabButton, boardFollowButton;
+
 
 
 
@@ -58,21 +55,13 @@ public class BulletinPage {
 
     // image
     ImageIcon chatImg = new ImageIcon("./Image/Button_Image/chat.png");
-    ImageIcon boardImg = new ImageIcon("./Image/Button_Image/board_here.png");
-    ImageIcon searchImg = new ImageIcon("./Image/Button_Image/search.png");
+    ImageIcon boardImg = new ImageIcon("./Image/Button_Image/board.png");
+    ImageIcon searchImg = new ImageIcon("./Image/Button_Image/search_here.png");
     ImageIcon myPageImg = new ImageIcon("./Image/Button_Image/myPage.png");
 
-    Font fontExtraBold = con.getFontExtraBold();
-    Font fontRegular = con.getFontRegular();
-    Font fontRegular2 = con.getFontRegular();
-    Font fontBold = con.getFontBold();
-    Font fontBold2 = con.getFontBold();
-    Font fontLight = con.getFontRegular();
 
 
-    ImageIcon plusImg = new ImageIcon("./Image/icon/plus.png");
-
-    public BulletinPage () throws IOException, FontFormatException {
+    public SearchPage () throws IOException, FontFormatException {
         JFrame mainFrame = new JFrame(title);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(753,640);
@@ -86,14 +75,10 @@ public class BulletinPage {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(fontBlack);
 
+
         fontMedium = fontMedium.deriveFont(15f);
         ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(fontMedium);
-
-        fontExtraBold = fontExtraBold.deriveFont(15f);
-        GraphicsEnvironment ge2 = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        ge2.registerFont(fontExtraBold);
-
 
         // sideBar
         sidePanel = new JPanel();
@@ -209,13 +194,13 @@ public class BulletinPage {
                 });
             }
         });
-        searchBtn.addActionListener(new ActionListener() {
+        boardBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         try {
-                            new SearchPage();
+                            new BulletinPage();
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         } catch (FontFormatException e) {
@@ -273,64 +258,25 @@ public class BulletinPage {
 
         // main
         mainPanel = new JPanel();
+        mainPanel.setLayout(new BorderLayout());
         mainPanel.setPreferredSize(new Dimension(603, 640));
-        mainPanel.setBackground(Color.WHITE);
         chatTitlePanel = new JPanel();
         chatTitlePanel.setLayout(new BorderLayout());
-        chatTitlePanel.setBorder(BorderFactory.createEmptyBorder(40, 50, 30, 35));
-        chatTitleLabel = new JLabel(board);
-        chatTitleLabel.setFont(fontBlack);
+        chatTitlePanel.setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 35));
+        titleLabel = new JLabel(search);
+        titleLabel.setFont(fontBlack);
 
 
-        boardWritingButton = new RoundedButton("글쓰기");
-        boardWritingButton.setFont(fontExtraBold);
-        boardWritingButton.setForeground(Color.GRAY);
-        Insets writingButtonMargin = boardWritingButton.getMargin();
-        writingButtonMargin.left = 30; // 여백 값 조절 (원하는 값으로 변경)
-        writingButtonMargin.top = 10;
-        boardWritingButton.setMargin(writingButtonMargin);
-
-        //boardMainChoosePanel
-        boardMainChoosePanel = new JPanel(new FlowLayout());
-        boardMainChoosePanel.setPreferredSize(new Dimension(603, 30));
-        boardMainChoosePanel.setLayout(new FlowLayout(FlowLayout.LEFT)); // FlowLayout로 변경 (왼쪽 정렬)
-        boardMainChoosePanel.setBackground(Color.WHITE);
-
-
-        // boardTabButton
-
-        boardTabButton = new RoundedButton2("추천 탭");
-        boardTabButton.setFont(fontExtraBold);
-        boardTabButton.setForeground(Color.GRAY);
-        Insets buttonMargin1 = boardTabButton.getMargin();
-        buttonMargin1.left = 20;
-        buttonMargin1.top = 10;
-        boardTabButton.setMargin(buttonMargin1);
-        boardTabButton.setBorderPainted(false);
-
-        //boardFollowButton
-        boardFollowButton = new RoundedBorderButton("팔로우");
-        boardFollowButton.setFont(fontExtraBold);
-        boardFollowButton.setForeground(Color.GRAY);
-        Insets buttonMargin2 = boardFollowButton.getMargin();
-        buttonMargin2.left = 20;
-        buttonMargin2.top = 10;
-        boardFollowButton.setMargin(buttonMargin2);
-        boardFollowButton.setBorderPainted(false);
-
-        bulletinGroupPanel = new JPanel();
-        bulletinGroupPanel.setLayout(new BoxLayout(bulletinGroupPanel, BoxLayout.Y_AXIS));
-        bulletinGroupPanel.setBackground(Color.WHITE);
-        scrollPane = new JScrollPane(bulletinGroupPanel);
-        scrollPane.setBackground(Color.WHITE);
+        searchGroupPanel = new JPanel();
+        searchGroupPanel.setLayout(new BoxLayout(searchGroupPanel, BoxLayout.Y_AXIS));
 
         for (int i = 0; i < 10; i++ ) {
-            bulletinBoardPanel bulletinBoardPanel = new bulletinBoardPanel();
-            bulletinGroupPanel.add(bulletinBoardPanel);
-//            JButton jButton = new JButton("어쩌고저ㅓㅉㄱㄱㄴ아럼ㄴㄹ");
-//            bulletinGroupPanel.add(jButton);
+            searchPanel searchPanel1 = new searchPanel();
+            searchGroupPanel.add(searchPanel1);
         }
 
+
+        scrollPane = new JScrollPane(searchGroupPanel);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setBorder(null);
 
@@ -338,168 +284,31 @@ public class BulletinPage {
         chatTitlePanel.setBackground(Color.WHITE);
         mainPanel.setBackground(Color.WHITE);
 
+
+
         // add
-        chatTitlePanel.add(chatTitleLabel, BorderLayout.WEST);
-        chatTitlePanel.add(boardWritingButton, BorderLayout.EAST);
+        chatTitlePanel.add(titleLabel, BorderLayout.WEST);
 
-        boardMainChoosePanel.add(Box.createRigidArea(new Dimension(35, 0)));
-        boardMainChoosePanel.add(boardTabButton);
-        boardMainChoosePanel.add(boardFollowButton);
-
-        JPanel contentPanel = new JPanel();
-        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
-        contentPanel.setBackground(Color.WHITE);
-
-// boardMainChoosePanel과 scrollPane을 contentPanel에 추가
-        contentPanel.add(boardMainChoosePanel);
-        contentPanel.add(scrollPane);
-
-// mainPanel에 contentPanel 추가
-        mainPanel.setLayout(new BorderLayout());
-        mainPanel.setBackground(Color.WHITE);
         mainPanel.add(chatTitlePanel, BorderLayout.NORTH);
-        mainPanel.add(contentPanel, BorderLayout.CENTER);
+        mainPanel.add(scrollPane, BorderLayout.SOUTH);
 
         mainFrame.add(sidePanel, BorderLayout.WEST);
         mainFrame.add(mainPanel, BorderLayout.EAST);
         mainFrame.setVisible(true);
     }
 
-    public class RoundedPanelBorder implements Border {
-        private int arc;
-        private int thickness;
-
-        public RoundedPanelBorder(int arc, int thickness) {
-            this.arc = arc;
-            this.thickness = thickness;
-        }
-        @Override
-        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-            Graphics2D g2d = (Graphics2D) g.create();
-            g2d.setColor(mainColor); // 테두리 색 설정
-            g2d.setStroke(new BasicStroke(thickness));
-            g2d.draw(new RoundRectangle2D.Double(x-1, y, width - 1, height - 1, arc, arc));
-            g2d.dispose();
-        }
-
-        @Override
-        public Insets getBorderInsets(Component c) {
-            return new Insets(thickness, thickness, thickness, thickness);
-        }
-
-        @Override
-        public boolean isBorderOpaque() {
-            return true;
-        }
-    }
-
-    // 버튼
-    public class RoundedButton extends JButton {
-        public RoundedButton() { super(); decorate(); }
-        public RoundedButton(String text) { super(text); decorate(); }
-        public RoundedButton(Action action) { super(action); decorate(); }
-        public RoundedButton(Icon icon) { super(icon); decorate(); }
-        public RoundedButton(String text, Icon icon) { super(text, icon); decorate(); }
-        protected void decorate() { setBorderPainted(false); setOpaque(false); }
-        @Override
-        protected void paintComponent(Graphics g) {
-            Color c= mainColor; //배경색 결정
-            Color o= Color.GRAY; //글자색 결정
-            int width = getWidth();
-            int height = getHeight();
-            Graphics2D graphics = (Graphics2D) g;
-            graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            if (getModel().isArmed()) { graphics.setColor(c.darker()); }
-            else if (getModel().isRollover()) { graphics.setColor(c.brighter()); }
-            else { graphics.setColor(c); }
-            graphics.fillRoundRect(0, 0, width, height, 40, 40);
-            FontMetrics fontMetrics = graphics.getFontMetrics();
-            Rectangle stringBounds = fontMetrics.getStringBounds(this.getText(), graphics).getBounds();
-            int textX = (width - stringBounds.width) / 2;
-            int textY = (height - stringBounds.height) / 2 + fontMetrics.getAscent();
-            graphics.setColor(o);
-            graphics.setFont(getFont());
-            graphics.drawString(getText(), textX, textY);
-            graphics.dispose();
-            super.paintComponent(g);
-        }
-    }
-
-    public class RoundedButton2 extends JButton {
-        public RoundedButton2() { super(); decorate(); }
-        public RoundedButton2(String text) { super(text); decorate(); }
-        public RoundedButton2(Action action) { super(action); decorate(); }
-        public RoundedButton2(Icon icon) { super(icon); decorate(); }
-        public RoundedButton2(String text, Icon icon) { super(text, icon); decorate(); }
-        protected void decorate() { setBorderPainted(false); setOpaque(false); }
-        @Override
-        protected void paintComponent(Graphics g) {
-            Color c= mainColor; //배경색 결정
-            Color o= Color.GRAY; //글자색 결정
-            int width = getWidth();
-            int height = getHeight();
-            Graphics2D graphics = (Graphics2D) g;
-            graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            if (getModel().isArmed()) { graphics.setColor(c.darker()); }
-            else if (getModel().isRollover()) { graphics.setColor(c.brighter()); }
-            else { graphics.setColor(c); }
-            graphics.fillRoundRect(0, 0, width, height, 40, 40);
-            FontMetrics fontMetrics = graphics.getFontMetrics();
-            Rectangle stringBounds = fontMetrics.getStringBounds(this.getText(), graphics).getBounds();
-            int textX = (width - stringBounds.width) / 2;
-            int textY = (height - stringBounds.height) / 2 + fontMetrics.getAscent();
-            graphics.setColor(o);
-            graphics.setFont(getFont());
-            graphics.drawString(getText(), textX, textY);
-            graphics.dispose();
-            super.paintComponent(g);
-        }
-    }
-
-    public class RoundedBorderButton extends JButton {
-
-        public RoundedBorderButton(String text) { super(text); decorate();}
-
-        protected void decorate() { setOpaque(false); }
-
-        @Override
-        protected void paintComponent(Graphics g) {
-            Color c = Color.WHITE; // 배경색 결정
-            Color o = Color.GRAY; // 글자색 결정
-            int width = getWidth();
-            int height = getHeight();
-            Graphics2D graphics = (Graphics2D) g;
-            graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            if (getModel().isArmed()) {
-                graphics.setColor(c.darker());
-            } else if (getModel().isRollover()) {
-                graphics.setColor(c.brighter());
-            } else {
-                graphics.setColor(c);
-            }
-            graphics.fillRoundRect(0, 0, width, height, 40, 40);
-
-            // Add border here
-            graphics.setColor(mainColor); // 테두리 색 설정
-            graphics.setStroke(new BasicStroke(3)); // 테두리 두께 설정
-            graphics.draw(new RoundRectangle2D.Double(1, 1, width - 2, height - 2, 40, 40));
-
-            FontMetrics fontMetrics = graphics.getFontMetrics();
-            Rectangle stringBounds = fontMetrics.getStringBounds(this.getText(), graphics).getBounds();
-            int textX = (width - stringBounds.width) / 2;
-            int textY = (height - stringBounds.height) / 2 + fontMetrics.getAscent();
-            graphics.setColor(o);
-            graphics.setFont(getFont());
-            graphics.drawString(getText(), textX, textY);
-        }
-    }
-
-
-
-
     // main
     public static void main(String[] args) throws IOException, FontFormatException {
-        new BulletinPage();
-
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    new SearchPage();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (FontFormatException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 }
