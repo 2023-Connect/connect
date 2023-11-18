@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 public class ChatPage {
@@ -277,12 +279,25 @@ public class ChatPage {
         for (int i = 0; i < 10; i++ ) {
             chatRoomPanel chatRoomPanel = new chatRoomPanel();
             chatGroupPanel.add(chatRoomPanel);
+            chatRoomPanel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    try {
+                        new ChatPage(); // ChatPage 인스턴스를 생성합니다. 이때, Chat 클래스는 나타나지 않습니다.
+                    } catch (IOException | FontFormatException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            });
         }
+
 
 
         scrollPane = new JScrollPane(chatGroupPanel);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setBorder(null);
+
+
 
         // setBackground
         chatTitlePanel.setBackground(Color.WHITE);

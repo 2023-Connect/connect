@@ -27,7 +27,7 @@ public class Chat extends JPanel{
     public Chat () throws IOException, FontFormatException {
         JFrame mainFrame = new JFrame();
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.setSize(400,700);
+        mainFrame.setSize(360,700);
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setResizable(false);
         mainFrame.setLayout(new BorderLayout());
@@ -48,17 +48,17 @@ public class Chat extends JPanel{
         GraphicsEnvironment ge4 = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge4.registerFont(fontBold);
 
-        setPreferredSize(new Dimension(400, 210));
+        setPreferredSize(new Dimension(360, 210));
         setBackground(Color.WHITE);
 
         mainPanel = new JPanel();
-        mainPanel.setPreferredSize(new Dimension(400, 210));
+        mainPanel.setPreferredSize(new Dimension(360, 210));
         mainPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 //            boardBulletinPanel.setBackground(Color.WHITE);
         mainPanel.setBackground(Color.WHITE);
 
         myChatPanel = new JPanel();
-        myChatPanel.setPreferredSize(new Dimension(400, 100));
+        myChatPanel.setPreferredSize(new Dimension(360, 100));
         myChatPanel.setLayout(new BoxLayout(myChatPanel, BoxLayout.Y_AXIS));
         myChatPanel.setBackground(Color.WHITE);
 
@@ -79,7 +79,7 @@ public class Chat extends JPanel{
 
 
         youChatPanel = new JPanel();
-        youChatPanel.setPreferredSize(new Dimension(400, 100));
+        youChatPanel.setPreferredSize(new Dimension(360, 100));
         youChatPanel.setLayout(new BoxLayout(youChatPanel, BoxLayout.Y_AXIS));
         youChatPanel.setBackground(mainColor);
 
@@ -120,3 +120,4 @@ public class Chat extends JPanel{
 //        new Chat();
 //    }
 }
+
