@@ -1,13 +1,15 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 public class ChatRoomPage {
 
@@ -42,9 +44,21 @@ public class ChatRoomPage {
     Font fontRegular = con.getFontRegular();
     Font fontBold = con.getFontRegular();
 
-    public ChatRoomPage() throws IOException, FontFormatException {
+    public ChatRoomPage(Map<String, String> userFile) throws IOException, FontFormatException {
         JFrame mainFrame = new JFrame();
-        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Set to DO_NOTHING_ON_CLOSE
+
+        // Add a WindowListener to handle window closing event
+        mainFrame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int option = JOptionPane.showConfirmDialog(mainFrame,
+                        "정말 채팅창을 닫겠습니까?", "Confirmation", JOptionPane.YES_NO_OPTION);
+                if (option == JOptionPane.YES_OPTION) {
+                    mainFrame.dispose(); // Dispose the frame only if the user chooses 'Yes'
+                }
+            }
+        });
         mainFrame.setSize(400,700);
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setResizable(false);
@@ -129,12 +143,10 @@ public class ChatRoomPage {
         chatGroupPanel.setLayout(new BoxLayout(chatGroupPanel, BoxLayout.Y_AXIS));
         chatGroupPanel.setBackground(Color.WHITE);
 
-        for (int i = 0; i < 50; i++ ) {
-            Chat Chat = new Chat();
-            chatGroupPanel.add(Chat);
-//            JButton jButton = new JButton("어쩌고저ㅓㅉㄱㄱㄴ아럼ㄴㄹ");
-//            panel.add(jButton);
-        }
+//        for (int i = 0; i < 50; i++ ) {
+//            Chat chat = new Chat();
+//            chatGroupPanel.add(chat);
+//        }
         scrollPane = new JScrollPane(chatGroupPanel);
         scrollPane.setBackground(Color.WHITE);
 
@@ -279,9 +291,4 @@ public class ChatRoomPage {
         }
     }
 
-
-
-    public static void main(String[] args) throws IOException, FontFormatException {
-        new ChatRoomPage();
-    }
 }

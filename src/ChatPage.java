@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.Map;
 
 public class ChatPage {
 
@@ -63,7 +64,7 @@ public class ChatPage {
 
     ImageIcon plusImg = new ImageIcon("./Image/icon/plus.png");
 
-    public ChatPage () throws IOException, FontFormatException {
+    public ChatPage (Map<String, String> userFile) throws IOException, FontFormatException {
         JFrame mainFrame = new JFrame(title);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(753,640);
@@ -185,7 +186,7 @@ public class ChatPage {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         try {
-                            new SearchPage();
+                            new SearchPage(userFile);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         } catch (FontFormatException e) {
@@ -202,7 +203,7 @@ public class ChatPage {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         try {
-                            new BulletinPage();
+                            new BulletinPage(userFile);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         } catch (FontFormatException e) {
@@ -219,7 +220,7 @@ public class ChatPage {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         try {
-                            new MyPage();
+                            new MyPage(userFile);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         } catch (FontFormatException e) {
@@ -283,7 +284,7 @@ public class ChatPage {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     try {
-                        new ChatPage(); // ChatPage 인스턴스를 생성합니다. 이때, Chat 클래스는 나타나지 않습니다.
+                        new ChatRoomPage(userFile); // ChatPage 인스턴스를 생성합니다. 이때, Chat 클래스는 나타나지 않습니다.
                     } catch (IOException | FontFormatException ex) {
                         ex.printStackTrace();
                     }
@@ -317,9 +318,4 @@ public class ChatPage {
         mainFrame.setVisible(true);
     }
 
-
-    // main
-    public static void main(String[] args) throws IOException, FontFormatException {
-        new ChatPage();
-    }
 }

@@ -2,10 +2,15 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
-public class Sign_in {
+public class Sign_in extends Component {
+    JFrame mainFrame;
     JPanel infoPanel;
         JLabel infoLabel;
         String login = "로그인";
@@ -40,8 +45,9 @@ public class Sign_in {
     Color mainColor = con.getMainColor();
 
 
+
     public Sign_in() throws IOException, FontFormatException {
-        JFrame mainFrame = new JFrame(title);
+        mainFrame = new JFrame(title);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(716,620);
         mainFrame.setLocationRelativeTo(null);
@@ -141,10 +147,28 @@ public class Sign_in {
         signInBtn.setPreferredSize(new Dimension(150, 65)); // 버튼의 크기를 지정합니다.
         signInBtn.setFont(fontBold);
 
+        signInBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                performLogin();
+            }
+        });
+
+
         signUpBtn = new RoundedButton(signup);
         signUpBtn.setPreferredSize(new Dimension(150, 65));
         signUpBtn.setFont(fontBold);
 
+        signUpBtn.addActionListener(e -> SwingUtilities.invokeLater(() -> {
+            try {
+                new SignUp();
+            } catch (IOException e1) {
+                throw new RuntimeException(e1);
+            } catch (FontFormatException e1) {
+                throw new RuntimeException(e1);
+            }
+            mainFrame.setVisible(false);
+        }));
 
 
         // setBackground
@@ -178,7 +202,29 @@ public class Sign_in {
 
         mainFrame.setVisible(true);
     }
+    private void performLogin() {
+        String id = idTextArea.getText();
+        String password = pwTextArea.getText();
 
+        Map<String, String> users = FileManager.readUserIdPw();
+
+        Map<String, String> userFile = FileManager.readUsersFromFile();
+
+        if (users.get("id").equals(id) && users.get("password").equals(password)) {
+            JOptionPane.showMessageDialog(mainFrame, "로그인 성공!");
+            try {
+                new MyPage(userFile);
+                mainFrame.setVisible(false);
+            } catch (IOException e1) {
+                throw new RuntimeException(e1);
+            } catch (FontFormatException e1) {
+                throw new RuntimeException(e1);
+            }
+        } else {
+            JOptionPane.showMessageDialog(mainFrame, "로그인 실패. 올바른 아이디와 비밀번호를 입력하세요.");
+        }
+
+    }
 
     // 둥근 모서리
     public class RoundedPanelBorder implements Border {

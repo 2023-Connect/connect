@@ -1,10 +1,14 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
+import static com.sun.java.accessibility.util.AWTEventMonitor.addActionListener;
 
 public class chatRoomPanel extends JPanel {
 
@@ -142,7 +146,6 @@ public class chatRoomPanel extends JPanel {
         timePanel.add(timeLabel, gbc);
 
         timePanel.setBackground(Color.WHITE);
-
 
         add(ImageLabel, BorderLayout.WEST);
         add(contentPanel, BorderLayout.CENTER);

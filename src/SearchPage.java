@@ -2,10 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
 import java.io.IOException;
-
-import static com.sun.glass.ui.Cursor.setVisible;
+import java.util.Map;
 
 public class SearchPage {
 
@@ -61,7 +59,7 @@ public class SearchPage {
 
 
 
-    public SearchPage () throws IOException, FontFormatException {
+    public SearchPage (Map<String, String> userFile) throws IOException, FontFormatException {
         JFrame mainFrame = new JFrame(title);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(753,640);
@@ -183,7 +181,7 @@ public class SearchPage {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         try {
-                            new ChatPage();
+                            new ChatPage(userFile);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         } catch (FontFormatException e) {
@@ -200,7 +198,7 @@ public class SearchPage {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         try {
-                            new BulletinPage();
+                            new BulletinPage(userFile);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         } catch (FontFormatException e) {
@@ -217,7 +215,7 @@ public class SearchPage {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         try {
-                            new MyPage();
+                            new MyPage(userFile);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         } catch (FontFormatException e) {
@@ -297,18 +295,4 @@ public class SearchPage {
         mainFrame.setVisible(true);
     }
 
-    // main
-    public static void main(String[] args) throws IOException, FontFormatException {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new SearchPage();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                } catch (FontFormatException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-    }
 }

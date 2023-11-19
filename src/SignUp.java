@@ -2,9 +2,10 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class SignUp extends JFrame {
@@ -98,18 +99,14 @@ public class SignUp extends JFrame {
 
 
     Color mainColor = Color.decode("#FFF17E");
-
+    JFrame mainFrame;
     GridBagConstraints gbc = new GridBagConstraints();
 
-
     public SignUp() throws IOException, FontFormatException {
-    }
-
-    public void SignUp() {
 
 
         Dimension dim = new Dimension(400,400);
-        JFrame mainFrame = new JFrame(titlename);
+         mainFrame = new JFrame(titlename);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(716,650);
         mainFrame.setLocationRelativeTo(null);
@@ -306,11 +303,12 @@ public class SignUp extends JFrame {
         signInButton = new RoundedButton("회원가입");
         signInButton.setFont(fontBold);
         signinButtonPanel.add(signInButton, BorderLayout.EAST);
-
-
-//        nationalityPanel.add(nationalityPanel1);
-//        nationalityPanel.add(nationalityPanel2);
-//        nationalityPanel.add(nationalityPanel3);
+        signInButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                performSignUp();
+            }
+        });
 
 
         jPanel.add(titlePanel);
@@ -329,7 +327,68 @@ public class SignUp extends JFrame {
 
         mainFrame.setVisible(true);
     }
+    private void performSignUp() {
+        // Retrieve user input
+        String userId = idTextField.getText();
+        String userName = nameTextField.getText();
+        String userPassword = passwordTextField.getText();
+        String nationality1 = (String) nationalityCombobox1.getSelectedItem();
+        String nationality2 = (String) nationalityCombobox2.getSelectedItem();
+        String nationality3 = (String) nationalityCombobox3.getSelectedItem();
+        String userLanguage = (String) languageCombobox.getSelectedItem();
+        int userBirthYear = (int) birthdayYearCombobox.getSelectedItem();
+        int userBirthMonth = (int) birthdayMonthCombobox.getSelectedItem();
+        int userBirthDay = (int) birthdayDayCombobox.getSelectedItem();
+        String userGender = (String) genderCombobox.getSelectedItem();
 
+
+        // Create a User object
+        User newUser = new User(userId, userName, userPassword, nationality1, nationality2, nationality3,
+                userLanguage, userBirthYear, userBirthMonth, userBirthDay, userGender);
+
+        // Save the user information to a file
+        saveUserToFile(newUser);
+
+        JOptionPane.showMessageDialog(this, "회원가입 성공!");
+        clearFields();
+        try {
+            new Sign_in();
+            mainFrame.setVisible(false);
+        } catch (IOException e1) {
+            throw new RuntimeException(e1);
+        } catch (FontFormatException e1) {
+            throw new RuntimeException(e1);
+        }
+    }
+
+    private void saveUserToFile(User user) {
+        String csvString = user.toString();
+
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("user_data.txt"));
+            writer.write(csvString);
+            writer.newLine();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "회원가입 정보를 저장하는 동안 오류가 발생했습니다.");
+        }
+    }
+
+    private void clearFields() {
+        // Clear input fields after successful sign up
+        idTextField.setText("");
+        nameTextField.setText("");
+        passwordTextField.setText("");
+        nationalityCombobox1.setSelectedIndex(0);
+        nationalityCombobox2.setSelectedIndex(0);
+        nationalityCombobox3.setSelectedIndex(0);
+        languageCombobox.setSelectedIndex(0);
+        birthdayYearCombobox.setSelectedIndex(0);
+        birthdayMonthCombobox.setSelectedIndex(0);
+        birthdayDayCombobox.setSelectedIndex(0);
+        genderCombobox.setSelectedIndex(0);
+    }
     // 둥근 모서리
     public class RoundedPanelBorder implements Border {
         private int arc;
@@ -392,8 +451,7 @@ public class SignUp extends JFrame {
     }
 
     public static void main(String[] args) throws IOException, FontFormatException {
-        SignUp signup = new SignUp();
-        signup.SignUp();
+        new SignUp();
     }
 
 }

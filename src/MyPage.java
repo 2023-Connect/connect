@@ -1,7 +1,6 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +9,7 @@ import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 public class MyPage {
 
@@ -99,7 +99,7 @@ public class MyPage {
     JLabel profileLabel;
 
 
-    public MyPage () throws IOException, FontFormatException {
+    public MyPage (Map<String, String> userFile) throws IOException, FontFormatException {
         JFrame mainFrame = new JFrame(title);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(753,640);
@@ -123,6 +123,21 @@ public class MyPage {
         GraphicsEnvironment ge4 = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge4.registerFont(fontBold);
 
+        // userFile
+        myPageName = userFile.get("userName");
+        String myPageNationalityTemp = userFile.get("nationality1");
+        for (int i = 2; i <= 3; i++) {
+            if (!userFile.get("nationality"+i).equals("다중국적자만 선택합니다")) {
+                myPageNationalityTemp += (", " + userFile.get("nationality"+i));
+            }
+        }
+        myPageNationality = myPageNationalityTemp;
+
+        myPageLanguage = userFile.get("userLanguage");
+        birthdayYear = Integer.parseInt(userFile.get("userBirthYear"));
+        birthdayMonth = Integer.parseInt(userFile.get("userBirthMonth"));
+        birthdayDay = Integer.parseInt(userFile.get("userBirthDay"));
+        myPageGender = userFile.get("userGender");
 
         // sideBar
         sidePanel = new JPanel();
@@ -227,7 +242,7 @@ public class MyPage {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         try {
-                            new ChatPage();
+                            new ChatPage(userFile);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         } catch (FontFormatException e) {
@@ -244,7 +259,7 @@ public class MyPage {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         try {
-                            new BulletinPage();
+                            new BulletinPage(userFile);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         } catch (FontFormatException e) {
@@ -261,7 +276,7 @@ public class MyPage {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         try {
-                            new SearchPage();
+                            new SearchPage(userFile);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         } catch (FontFormatException e) {
@@ -478,9 +493,4 @@ public class MyPage {
         }
     }
 
-
-    // main
-    public static void main(String[] args) throws IOException, FontFormatException {
-        new MyPage();
-    }
 }

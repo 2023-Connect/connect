@@ -25,12 +25,6 @@ public class Chat extends JPanel{
     Font fontRegular = con.getFontRegular();
     Font fontBold = con.getFontRegular();
     public Chat () throws IOException, FontFormatException {
-        JFrame mainFrame = new JFrame();
-        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.setSize(360,700);
-        mainFrame.setLocationRelativeTo(null);
-        mainFrame.setResizable(false);
-        mainFrame.setLayout(new BorderLayout());
 
         fontMedium = fontMedium.deriveFont(15f);
         GraphicsEnvironment ge1 = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -66,14 +60,14 @@ public class Chat extends JPanel{
         myNameLabel.setFont(fontExtraBold);
         myNameLabel.setForeground(Color.BLACK);
         myNameLabel.setBorder(BorderFactory.createCompoundBorder(
-                new EmptyBorder(10,20,10,0),
+                new EmptyBorder(10, 20, 10, 0),
                 myNameLabel.getBorder()
         ));
         myChat = new JLabel(myChatst);
         myChat.setFont(fontRegular);
         myChat.setForeground(Color.BLACK);
         myChat.setBorder(BorderFactory.createCompoundBorder(
-                new EmptyBorder(0,20,0,0),
+                new EmptyBorder(0, 20, 0, 0),
                 myChat.getBorder()
         ));
 
@@ -87,17 +81,16 @@ public class Chat extends JPanel{
         youNameLabel.setFont(fontExtraBold);
         youNameLabel.setForeground(Color.BLACK);
         youNameLabel.setBorder(BorderFactory.createCompoundBorder(
-                new EmptyBorder(10,20,10,0),
+                new EmptyBorder(10, 20, 10, 0),
                 youNameLabel.getBorder()
         ));
         youChat = new JLabel(youChatSt);
         youChat.setFont(fontRegular);
         youChat.setForeground(Color.BLACK);
         youChat.setBorder(BorderFactory.createCompoundBorder(
-                new EmptyBorder(0,20,0,0),
+                new EmptyBorder(0, 20, 0, 0),
                 youChat.getBorder()
         ));
-
 
 
         myChatPanel.add(myNameLabel);
@@ -111,13 +104,6 @@ public class Chat extends JPanel{
 
         add(mainPanel);
         setVisible(true);
-//        mainFrame.add(mainPanel);
-//        mainFrame.setVisible(true);
-
     }
-
-//    public static void main(String[] args) throws IOException, FontFormatException {
-//        new Chat();
-//    }
 }
 

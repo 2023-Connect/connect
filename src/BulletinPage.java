@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
+import java.util.Map;
 
 public class BulletinPage {
 
@@ -72,7 +73,7 @@ public class BulletinPage {
 
     ImageIcon plusImg = new ImageIcon("./Image/icon/plus.png");
 
-    public BulletinPage () throws IOException, FontFormatException {
+    public BulletinPage (Map<String, String> userFile) throws IOException, FontFormatException {
         JFrame mainFrame = new JFrame(title);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(753,640);
@@ -198,7 +199,7 @@ public class BulletinPage {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         try {
-                            new ChatPage();
+                            new ChatPage(userFile);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         } catch (FontFormatException e) {
@@ -215,7 +216,7 @@ public class BulletinPage {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         try {
-                            new SearchPage();
+                            new SearchPage(userFile);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         } catch (FontFormatException e) {
@@ -232,7 +233,7 @@ public class BulletinPage {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         try {
-                            new MyPage();
+                            new MyPage(userFile);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         } catch (FontFormatException e) {
@@ -494,12 +495,4 @@ public class BulletinPage {
         }
     }
 
-
-
-
-    // main
-    public static void main(String[] args) throws IOException, FontFormatException {
-        new BulletinPage();
-
-    }
 }
