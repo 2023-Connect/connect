@@ -140,13 +140,14 @@ public class ChatRoomPage {
         panel.setBackground(Color.WHITE);
 
         chatGroupPanel = new JPanel();
-        chatGroupPanel.setLayout(new BoxLayout(chatGroupPanel, BoxLayout.Y_AXIS));
+        chatGroupPanel.setLayout(new BoxLayout(chatGroupPanel, BoxLayout.Y_AXIS)); // Use Y_AXIS for vertical layout
         chatGroupPanel.setBackground(Color.WHITE);
 
-//        for (int i = 0; i < 50; i++ ) {
-//            Chat chat = new Chat();
-//            chatGroupPanel.add(chat);
-//        }
+        for (int i = 0; i < 20; i++) {
+            Chat chat = new Chat();
+            chatGroupPanel.add(chat);
+        }
+
         scrollPane = new JScrollPane(chatGroupPanel);
         scrollPane.setBackground(Color.WHITE);
 
@@ -183,8 +184,6 @@ public class ChatRoomPage {
         profilePanel.add(nationalityPanel);
         profilePanel.add(exitButton);
         profilePanel.add(Box.createRigidArea(new Dimension(10, 0)));
-
-        scrollPane.add(chatGroupPanel);
 
         inputPanel.add(chatTextField);
         inputPanel.add(sendButton);

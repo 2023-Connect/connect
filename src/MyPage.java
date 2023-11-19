@@ -54,7 +54,7 @@ public class MyPage {
     JLabel myPageNameLabel;
     String myPageId = "oxnqlu";
     JLabel myPageIdLabel;
-    String myPageSelfIntroduction = "쌍큼발랄고딩이";
+    String myPageSelfIntroduction = "소개를 입력해주세요";
     JLabel myPageSelfIntroductionLabel;
 
     JPanel myPageMainETCPanel;
@@ -125,6 +125,7 @@ public class MyPage {
 
         // userFile
         myPageName = userFile.get("userName");
+        myPageId = userFile.get("userId");
         String myPageNationalityTemp = userFile.get("nationality1");
         for (int i = 2; i <= 3; i++) {
             if (!userFile.get("nationality"+i).equals("다중국적자만 선택합니다")) {

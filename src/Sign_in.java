@@ -283,6 +283,7 @@ public class Sign_in extends Component {
 
 //    실행
     public static void main(String[] args) {
+
         SwingUtilities.invokeLater(() -> {
             try {
                 new Sign_in();
@@ -291,4 +292,5 @@ public class Sign_in extends Component {
             }
         });
     }
+
 }

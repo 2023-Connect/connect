@@ -64,7 +64,6 @@ public class FileManager {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                System.out.println("Line: " + line); // Print the line for debugging
                 Matcher userIdMatcher = userIdPattern.matcher(line);
                 Matcher userNameMatcher = userNamePattern.matcher(line);
                 Matcher passwordMatcher = passwordPattern.matcher(line);
